@@ -2,7 +2,9 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Feliz Sábado 💙</title>
+
 <style>
     body {
         margin: 0;
@@ -20,28 +22,24 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+        padding: 20px;
     }
 
     .start-screen h1 {
-        font-size: 2.5rem;
+        font-size: clamp(2.2rem, 6vw, 3rem);
         color: #4a90e2;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
     }
 
     .start-screen button {
-        padding: 15px 30px;
-        font-size: 1.2rem;
+        padding: 18px 40px;
+        font-size: clamp(1.2rem, 4vw, 1.4rem);
         border: none;
-        border-radius: 30px;
+        border-radius: 40px;
         background: #ff9ecf;
         color: white;
         cursor: pointer;
-        transition: transform 0.3s, box-shadow 0.3s;
         box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    }
-
-    .start-screen button:hover {
-        transform: scale(1.1);
     }
 
     /* Pantalla final */
@@ -51,28 +49,35 @@
         background: linear-gradient(180deg, #e8f9ff, #fff0f7);
         position: relative;
         text-align: center;
-        padding-top: 120px;
+        padding: 80px 20px 20px;
     }
 
     .message-screen h1 {
-        font-size: 3rem;
+        font-size: clamp(2.4rem, 7vw, 3.2rem);
         color: #4a90e2;
-        margin: 0 20px;
+        margin: 0;
         animation: fadeIn 2s ease-in-out;
     }
 
     .message-screen h2 {
-        margin-top: 30px;
-        font-size: 1.8rem;
+        margin-top: 25px;
+        font-size: clamp(1.6rem, 5vw, 2rem);
         color: #ff6fae;
         animation: fadeIn 3s ease-in-out;
+    }
+
+    .message-screen p {
+        margin-top: 20px;
+        font-size: clamp(1.3rem, 4.5vw, 1.6rem);
+        color: #5f7fa6;
+        line-height: 1.5;
+        animation: fadeIn 4s ease-in-out;
     }
 
     /* Corazones */
     .heart {
         position: absolute;
         color: #ff9ecf;
-        font-size: 20px;
         animation: float 6s infinite ease-in;
         opacity: 0.8;
     }
@@ -82,9 +87,7 @@
             transform: translateY(100vh);
             opacity: 0;
         }
-        50% {
-            opacity: 1;
-        }
+        50% { opacity: 1; }
         100% {
             transform: translateY(-10vh);
             opacity: 0;
@@ -92,11 +95,12 @@
     }
 
     @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.9); }
+        from { opacity: 0; transform: scale(0.95); }
         to { opacity: 1; transform: scale(1); }
     }
 </style>
 </head>
+
 <body>
 
 <div class="start-screen" id="startScreen">
@@ -106,7 +110,12 @@
 
 <div class="message-screen" id="messageScreen">
     <h1>Feliz sábado mi niña<br>de ojitos bonitos 💖</h1>
-    <h2>Bye bye 👋✨</h2>
+    <h2>Que Dios llene tu día de paz ✨</h2>
+    <p>
+        🕊️ Un sábado para descansar en Él,<br>
+        sonreír, amar y caminar de Su mano 🙏
+    </p>
+    <p>Bye bye 👋💙</p>
 </div>
 
 <script>
@@ -114,14 +123,13 @@
         document.getElementById("startScreen").style.display = "none";
         document.getElementById("messageScreen").style.display = "block";
 
-        // Crear corazones
         for (let i = 0; i < 20; i++) {
             let heart = document.createElement("div");
             heart.className = "heart";
             heart.innerHTML = "💖";
             heart.style.left = Math.random() * 100 + "vw";
+            heart.style.fontSize = (20 + Math.random() * 18) + "px";
             heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-            heart.style.fontSize = (16 + Math.random() * 20) + "px";
             document.getElementById("messageScreen").appendChild(heart);
         }
     }
